@@ -11,7 +11,14 @@
   <div class="col-md-6">
     <% if current_user %>
       <h3>Top 10 Movies</h3>
-      
+      <ul class="list-group">
+        <% for i in 0..9 %>
+          <li class="list-group-item">
+            <span class="badge"><%= @topmovies[i].average.round(2) %></span>
+            <b><%= i+1 %></b> <%= @topmovies[i].title %>
+          </li>
+       <% end %>
+      </ul> 
     <% else %>
       <h3>Sign Up!</h3>
       <%= form_for(:user, :url => registration_path(:user), html: {class: 'form-horizontal'} ) do |f| %>
