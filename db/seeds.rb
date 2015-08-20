@@ -98,12 +98,12 @@
    MovieGenre.create(movie_id: 5, genre_id: 8)
 
    MoviePerson.create(movie_id: 1, person_id: 1, role: 'Act')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Act')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Director')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Writer')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Musician')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Producer')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Director')
-   MoviePerson.create(movie_id: 1, person_id: 1, role: 'Act')
+   MoviePerson.create(movie_id: 2, person_id: 4, role: 'Act')
+   MoviePerson.create(movie_id: 3, person_id: 5, role: 'Director')
+   MoviePerson.create(movie_id: 4, person_id: 6, role: 'Writer')
+   MoviePerson.create(movie_id: 6, person_id: 3, role: 'Musician')
+   MoviePerson.create(movie_id: 7, person_id: 1, role: 'Producer')
+   MoviePerson.create(movie_id: 5, person_id: 2, role: 'Director')
+   MoviePerson.create(movie_id: 8, person_id: 3, role: 'Act')
 
    #Act, Director, Writer, Producer, Musician, 
