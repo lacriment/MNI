@@ -14,11 +14,11 @@
   <%= @rating %>
   <% end %>
   <% for i in 1..10 %>
-  <% if @rating.round < i %>
-    <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style=>'opacity:0.5'} %>
-  <% else %>
-    <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
-  <% end %>
+    <% if @rating.round < i %>
+      <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style=>'opacity:0.5'} %>
+    <% else %>
+      <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
+    <% end %>
   <% end %>
 
 </h1>

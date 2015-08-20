@@ -9,7 +9,12 @@ class MoviesController < ApplicationController
 
   def rate
     movie = Movie.find(params[:movie_id])
-    UserRating.create(rating: params[:point], user_id: current_user, movie_id: movie.id)
+    rating = current_user.user_ratings.where(movie_id: movie.id).first
+    if rating
+      rating.update_attributes(rating: params[:point])
+    else
+      UserRating.create(rating: params[:point], user_id: current_user.id, movie_id: movie.id)
+    end
     redirect_to movie
   end
 
