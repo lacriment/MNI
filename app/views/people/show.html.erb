@@ -1,14 +1,15 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Full name:</strong>
-  <%= @person.full_name %>
-</p>
+<h1>
+<%= @person.full_name %>
+</h1>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @person.photo %>
-</p>
+<%= image_tag(@person.photo) %>
 
-<%= link_to 'Edit', edit_person_path(@person) %> |
-<%= link_to 'Back', people_path %>
+<h2>
+	Filmography
+</h2>
+<% @person.movies.each do |movie| %>
+<%= link_to movie.title, movie_path(movie) %>
+<br>
+<% end %>
