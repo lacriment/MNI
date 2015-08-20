@@ -10,7 +10,7 @@ class Ability
          can :access, :rails_admin
        else
          can :read, :all
-         can :manage, UserRating
+         can :rate,  Movie
        end
     #
     # The first argument to `can` is the action you are giving the user
