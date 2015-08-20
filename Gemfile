@@ -43,4 +43,5 @@ group :development, :test do
   gem 'spring'
 end
 gem 'devise'
+gem 'cancancan', '~> 1.10'
 gem 'rails_admin'
