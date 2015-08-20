@@ -10,6 +10,8 @@
 
   <div class="col-md-6">
     <% if current_user %>
+      <h3>Top 10 Movies</h3>
+      
     <% else %>
       <h3>Sign Up!</h3>
       <%= form_for(:user, :url => registration_path(:user), html: {class: 'form-horizontal'} ) do |f| %>
