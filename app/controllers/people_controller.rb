@@ -1,6 +1,6 @@
 class PeopleController < ApplicationController
   before_action :set_person, only: [:show, :edit, :update, :destroy]
-
+  load_and_authorize_resource
   # GET /people
   # GET /people.json
   def index
