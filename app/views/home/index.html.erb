@@ -1,8 +1,3 @@
-<% if current_user %>
-  <%= link_to 'Sign out', destroy_user_session_path, method: :delete %>
-  <% else %>
-  <%= link_to "Sign in", new_user_session_path %>
-<% end %>
 <%= link_to 'Movies', movies_path %>
 <%= link_to 'Genres', genres_path %>
 <%= link_to 'People', people_path %>
