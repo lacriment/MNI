@@ -1,3 +1,29 @@
-<%= link_to 'Movies', movies_path %>
-<%= link_to 'Genres', genres_path %>
-<%= link_to 'People', people_path %>
+
+<div class="row">
+
+  <div class="col-md-6">
+    <h3>Showcase</h3>
+    <% @movies.each do |m| %>
+      <%= link_to image_tag(m.cover,size: "180x300"), movie_path(m.id) %>
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <% if current_user %>
+    <% else %>
+      <h3>Sign Up!</h3>
+      <%= form_for(:user, :url => registration_path(:user), html: {class: 'form-horizontal'} ) do |f| %>
+        <div class="form-group">
+          <%= f.email_field :email, autofocus: true, class: "form-control", placeholder: "Email" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "Password" %>
+        </div>
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control",  placeholder: "Password Confirmation" %>
+        </div>
+        <%= f.submit "Register!", class: "btn btn-success" %>
+    <% end %> 
+  <% end %>
+  </div>
+</div>

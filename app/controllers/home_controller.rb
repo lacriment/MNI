@@ -1,4 +1,5 @@
 class HomeController < ApplicationController
 	def index
-	end
+    @movies = Movie.all.sample(3)
+  end
 end
