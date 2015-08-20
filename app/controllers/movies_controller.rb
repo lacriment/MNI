@@ -7,10 +7,21 @@ class MoviesController < ApplicationController
     @movies = Movie.all
   end
 
+  def rate
+    movie = Movie.find(params[:movie_id])
+    UserRating.create(rating: params[:point], user_id: current_user, movie_id: movie.id)
+    redirect_to movie
+  end
+
   # GET /movies/1
   # GET /movies/1.json
   def show
-    @rating = UserRating.where(movie_id: @movie.id).average(:rating).round(1)
+    @rating = UserRating.where(movie_id: @movie.id).average(:rating)
+    if @rating
+      @rating = @rating.round(1)
+    else
+      @rating = 0
+    end
   end
 
   # GET /movies/new

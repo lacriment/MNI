@@ -8,11 +8,23 @@
   	<small><%= link_to genre.name, genre_path(genre) %></small>
   <% end %>
   <br>
+  <% if @rating == 0 %>
+  Not voted yet.
+  <% else %>
   <%= @rating %>
+  <% end %>
+  <% for i in 1..10 %>
+  <% if @rating.round < i %>
+    <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style=>'opacity:0.5'} %>
+  <% else %>
+    <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
+  <% end %>
+  <% end %>
+
 </h1>
 
 <p>
-  <%= image_tag(@movie.cover,) %>
+  <%= image_tag(@movie.cover) %>
 </p>
 
 <p>
@@ -21,25 +33,25 @@
 
 Directors:
 <% @movie.directors.each do |director|%>
-<%= director.full_name %>
+<%= link_to director.full_name, person_path(director) %>
 <% end %>
 <br>
 Writers:
 <% @movie.writers.each do |writer|%>
-<%= writer.full_name %>
+<%= link_to writer.full_name, person_path(writer) %>
 <% end %>
 <br>
 Producer:
 <% @movie.producers.each do |producer|%>
-<%= producer.full_name %>
+<%= link_to producer.full_name, person_path(producer) %>
 <% end %>
 <br>
 Musicians:
 <% @movie.musicians.each do |musician|%>
-<%= musician.full_name %>
+<%= link_to musician.full_name, person_path(musician) %>
 <% end %>
 <br>
 Actors:
 <% @movie.actors.each do |actor|%>
-<%= actor.full_name %>
+<%= link_to actor.full_name, person_path(actor) %>
 <% end %>

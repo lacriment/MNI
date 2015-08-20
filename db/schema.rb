@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820065332) do
+ActiveRecord::Schema.define(version: 20150820144538) do
 
   create_table "genres", force: :cascade do |t|
     t.string   "name"
@@ -39,8 +39,9 @@ ActiveRecord::Schema.define(version: 20150820065332) do
     t.date     "release_date"
     t.text     "plot"
     t.string   "cover"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.float    "average",      default: 0.0
   end
 
   create_table "people", force: :cascade do |t|
