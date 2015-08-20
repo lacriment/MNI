@@ -1,24 +1,45 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
+
+<h1>
   <%= @movie.title %>
+  <small><%= @movie.release_date.year %></small>
+  <br>
+  <% @movie.genres.each do |genre| %>
+  	<small><%= link_to genre.name, genre_path(genre) %></small>
+  <% end %>
+  <br>
+  <%= @rating %>
+</h1>
+
+<p>
+  <%= image_tag(@movie.cover,) %>
 </p>
 
 <p>
-  <strong>Release date:</strong>
-  <%= @movie.release_date %>
-</p>
-
-<p>
-  <strong>Plot:</strong>
   <%= @movie.plot %>
 </p>
 
-<p>
-  <strong>Cover:</strong>
-  <%= @movie.cover %>
-</p>
-
-<%= link_to 'Edit', edit_movie_path(@movie) %> |
-<%= link_to 'Back', movies_path %>
+Directors:
+<% @movie.directors.each do |director|%>
+<%= director.full_name %>
+<% end %>
+<br>
+Writers:
+<% @movie.writers.each do |writer|%>
+<%= writer.full_name %>
+<% end %>
+<br>
+Producer:
+<% @movie.producers.each do |producer|%>
+<%= producer.full_name %>
+<% end %>
+<br>
+Musicians:
+<% @movie.musicians.each do |musician|%>
+<%= musician.full_name %>
+<% end %>
+<br>
+Actors:
+<% @movie.actors.each do |actor|%>
+<%= actor.full_name %>
+<% end %>

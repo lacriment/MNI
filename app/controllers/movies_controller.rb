@@ -10,6 +10,7 @@ class MoviesController < ApplicationController
   # GET /movies/1
   # GET /movies/1.json
   def show
+    @rating = UserRating.where(movie_id: @movie.id).average(:rating).round(1)
   end
 
   # GET /movies/new
