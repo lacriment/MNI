@@ -11,16 +11,25 @@
   <% if @rating == 0 %>
   Not voted yet.
   <% else %>
-  <%= @rating %>
+  <h3><%= @rating %></h3>
   <% end %>
-  <% for i in 1..10 %>
-    <% if @rating.round < i %>
-      <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style=>'opacity:0.5'} %>
-    <% else %>
-      <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
+  <% if current_user %>
+    <% for i in 1..10 %>
+      <% if @rating.round < i %>
+        <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style=>'opacity:0.5'} %>
+      <% else %>
+        <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
+      <% end %>
     <% end %>
+  <% else %>
+    <% for i in 1..10 %>
+        <% if @rating.round < i %>
+          <%= image_tag('star.png', width: 30, style:'opacity:0.5') %>
+        <% else %>
+          <%= image_tag('star.png', width: 30)%>
+        <% end %>
+      <% end %>
   <% end %>
-
 </h1>
 
 <p>
