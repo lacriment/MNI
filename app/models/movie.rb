@@ -1,4 +1,5 @@
 class Movie < ActiveRecord::Base
+	has_many :comments, dependent: :destroy
 	has_many :user_ratings, dependent: :destroy
 	has_many :movie_genres, dependent: :destroy
 	has_many :genres, through: :movie_genres
