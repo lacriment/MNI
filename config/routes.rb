@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   end
   get '/watchlist/:movie_id', to: "watch_lists#create", as: 'create_watchlist'
   delete '/watchlist/:movie_id', to: "watch_lists#destroy", as: 'destroy_watchlist'
-
+  get 'randommovie' => 'randommovie#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
