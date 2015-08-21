@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/manage', as: 'rails_admin'
   root to: 'home#index'
   devise_for :users
+  resources :comments
   resources :genres
   resources :people
   resources :movies do

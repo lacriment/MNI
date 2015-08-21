@@ -103,6 +103,9 @@
       </div>
       <div class="panel-body">
         <%= comment.body %>
+        <% if comment.user == current_user %>
+          <%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
       </div>
       </div>
     </div>
@@ -115,6 +118,7 @@
         </h4>
       </div>
       <div class="panel-body">
+      <%= render 'comments/form' %>
       </div>
     </div>
   </div>
