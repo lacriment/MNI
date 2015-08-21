@@ -45,8 +45,8 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
+    #binding.pry
     @movie = Movie.new(movie_params)
-
     respond_to do |format|
       if @movie.save
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
@@ -91,5 +91,8 @@ class MoviesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
       params.require(:movie).permit(:title, :release_date, :plot, :cover)
+    end
+    def movie_person_params
+      params.require(:movie).permit(genre_ids: [], actor_ids: [], director_ids: [])
     end
 end

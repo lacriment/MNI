@@ -1,3 +1,17 @@
+<% content_for :head do %>
+<link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/css/select2.min.css" rel="stylesheet" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0/js/select2.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.select2-multiple').select2();
+})
+</script>
+<style>
+  #movie_actors {
+    width: 200px;
+  }
+</style>
+<% end %>
 <%= form_for(@movie) do |f| %>
   <% if @movie.errors.any? %>
     <div id="error_explanation">
@@ -26,6 +40,30 @@
   <div class="field">
     <%= f.label :cover %><br>
     <%= f.text_field :cover %>
+  </div>
+  <div class="field">
+    <%= f.label :genres %> <br>
+    <%= f.select('genre_ids', Genre.all.collect {|g| [ g.name, g.id ] }, {}, {multiple: true, class: 'select2-multiple'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :directors %> <br>
+    <%= f.select('director_ids', Person.all.collect {|p| [ p.full_name, p.id ] }, {}, {multiple: true, class: 'select2-multiple'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :writers %> <br>
+    <%= f.select('writer_ids', Person.all.collect {|g| [ g.full_name, g.id ] }, {}, {multiple: true, class: 'select2-multiple'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :actors %> <br>
+    <%= f.select('actor_ids', Person.all.collect {|g| [ g.full_name, g.id ] }, {}, {multiple: true, class: 'select2-multiple'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :producers %> <br>
+    <%= f.select('producer_ids', Person.all.collect {|g| [ g.full_name, g.id ] }, {}, {multiple: true, class: 'select2-multiple'}) %>
+  </div>
+  <div class="field">
+    <%= f.label :musicians %> <br>
+    <%= f.select('musician_ids', Person.all.collect {|g| [ g.full_name, g.id ] }, {}, {multiple: true, class: 'select2-multiple'}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
