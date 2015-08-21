@@ -11,5 +11,7 @@ class Movie < ActiveRecord::Base
 	has_many :musicians, -> { where("role = ?", "Musician")}, through: :movie_people, source: :person
 	has_many :writers, -> { where("role = ?", "Writer")}, through: :movie_people, source: :person
 
+	accepts_nested_attributes_for :directors
+
 	#has_many :topics, through: :category_topics
 end

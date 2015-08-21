@@ -9,7 +9,6 @@
    Genre.create(name: 'Animation')
    Genre.create(name: 'Biography')
    Genre.create(name: 'Comedy')
-   Genre.create(name: 'Fantasy')
    Genre.create(name: 'Crime')
    Genre.create(name: 'Documentary')
    Genre.create(name: 'Drama')

@@ -45,10 +45,24 @@ class MoviesController < ApplicationController
   # POST /movies
   # POST /movies.json
   def create
-    #binding.pry
     @movie = Movie.new(movie_params)
     respond_to do |format|
       if @movie.save
+        movie_person_params[:actor_ids].each do |actor_id|
+         MoviePerson.create(movie_id:@movie.id, person_id: actor_id, role: 'Actor') unless actor_id == ''
+        end
+        movie_person_params[:director_ids].each do |director_id|
+         MoviePerson.create(movie_id:@movie.id, person_id: director_id, role: 'Director') unless director_id == ''
+        end
+        movie_person_params[:producer_ids].each do |producer_id|
+         MoviePerson.create(movie_id:@movie.id, person_id: producer_id, role: 'Producer') unless producer_id == ''
+        end
+        movie_person_params[:writer_ids].each do |writer_id|
+         MoviePerson.create(movie_id:@movie.id, person_id: writer_id, role: 'Writer')  unless writer_id == ''
+        end
+        movie_person_params[:musician_ids].each do |musician_id|
+         MoviePerson.create(movie_id:@movie.id, person_id: musician_id, role: 'Musician')  unless musician_id == ''
+        end
         format.html { redirect_to @movie, notice: 'Movie was successfully created.' }
         format.json { render :show, status: :created, location: @movie }
       else
@@ -90,9 +104,9 @@ class MoviesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def movie_params
-      params.require(:movie).permit(:title, :release_date, :plot, :cover)
+      params.require(:movie).permit(:title, :release_date, :plot, :cover, genre_ids: [], actor_ids: [], director_ids: [])
     end
     def movie_person_params
-      params.require(:movie).permit(genre_ids: [], actor_ids: [], director_ids: [])
+      params.require(:movie).permit(actor_ids: [], director_ids: [], producer_ids: [], writer_ids: [], musician_ids: [])
     end
 end
