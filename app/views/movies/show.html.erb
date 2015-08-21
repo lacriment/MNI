@@ -1,66 +1,90 @@
+<div class="row">
 
+  <div class="col-md-4">
+    <%= image_tag(@movie.cover, size: "300x430", id: "cover") %>
+  </div>
 
-<h1>
-  <%= @movie.title %>
-  <small><%= @movie.release_date.year %></small>
-  <br>
-  <% @movie.genres.each do |genre| %>
-  	<small><%= link_to genre.name, genre_path(genre) %></small>
-  <% end %>
-  <br>
-  <% if @rating == 0 %>
-  Not voted yet.
-  <% else %>
-  <h3><%= @rating %></h3>
-  <% end %>
-  <% if current_user %>
-    <% for i in 1..10 %>
-      <% if @rating.round < i %>
-        <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style=>'opacity:0.5'} %>
-      <% else %>
-        <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
-      <% end %>
+  <div class="col-md-8">
+    <h1><%= @movie.title %>&nbsp;<small><%= @movie.release_date.year %></small></h1>
+    <h4>
+    <% @movie.genres.each do |genre| %>
+      <%= link_to genre.name, genre_path(genre) %>
     <% end %>
-  <% else %>
-    <% for i in 1..10 %>
+    </h4>
+    <% if current_user %>
+      <% for i in 1..10 %>
         <% if @rating.round < i %>
-          <%= image_tag('star.png', width: 30, style:'opacity:0.5') %>
+          <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i), {:style => 'opacity: 0.5'} %>
         <% else %>
-          <%= image_tag('star.png', width: 30)%>
+          <%= link_to image_tag('star.png', width: 30), movie_rate_path(@movie, i) %>
         <% end %>
       <% end %>
-  <% end %>
-</h1>
-
-<p>
-  <%= image_tag(@movie.cover) %>
-</p>
-
-<p>
-  <%= @movie.plot %>
-</p>
-
-Directors:
-<% @movie.directors.each do |director|%>
-<%= link_to director.full_name, person_path(director) %>
-<% end %>
-<br>
-Writers:
-<% @movie.writers.each do |writer|%>
-<%= link_to writer.full_name, person_path(writer) %>
-<% end %>
-<br>
-Producer:
-<% @movie.producers.each do |producer|%>
-<%= link_to producer.full_name, person_path(producer) %>
-<% end %>
-<br>
-Musicians:
-<% @movie.musicians.each do |musician|%>
-<%= link_to musician.full_name, person_path(musician) %>
-<% end %>
-<br>
-Actors:
-<% @movie.actors.each do |actor|%>
-<%= link_to actor.full_name, person_path(actor) %>
-<% end %>
+    <% else %>
+      <% for i in 1..10 %>
+        <% if @rating.round < i %>
+          <%= image_tag('star.png', width: 30, style: 'opacity: 0.5') %>
+        <% else %>
+          <%= image_tag('star.png', width: 30) %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if @rating == 0 %>
+      <b> :( </b>
+    <% else %>
+      <b> <%= @rating %> </b>
+    <% end %>
+    <br>
+    <br>
+    <br>
+    <p> <%= @movie.plot %> </p>
+  </div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4> Directors: </h4></div>
+      <div class="panel-body">
+        <% @movie.directors.each do |director| %>
+          <%= link_to director.full_name, person_path(director) %><br> 
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4> Writers: </h4></div>
+      <div class="panel-body">
+        <% @movie.writers.each do |writer| %>
+          <%= link_to writer.full_name, person_path(writer) %><br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4> Producer: </h4></div>
+      <div class="panel-body">
+        <% @movie.producers.each do |producer|%>
+          <%= link_to producer.full_name, person_path(producer) %><br>
+        <% end %>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4> Musicians: </h4></div>
+      <div class="panel-body">
+        <% @movie.musicians.each do |musician|%>
+          <%= link_to musician.full_name, person_path(musician) %><br>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h4> Actors: </h4></div>
+      <div class="panel-body">
+        <% @movie.actors.each do |actor|%>
+          <%= link_to actor.full_name, person_path(actor) %><br>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
