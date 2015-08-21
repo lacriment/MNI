@@ -1,0 +1,5 @@
+<h1><%= @profile.email %></h1>
+<h2>Watch List</h2>
+<% @profile.watch_lists.each_with_index do |watchlist, i| %>
+<p><%= i+1 %>. <%= link_to watchlist.movie.title, movie_path(watchlist.movie) %></p>
+<% end %>

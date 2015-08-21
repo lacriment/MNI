@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   devise_for :users
   resources :comments
   resources :genres
+  resources :profiles
   resources :people
   resources :movies do
     get '/rate/:point', to: "movies#rate", as: 'rate'
   end
+  get '/watchlist/:movie_id', to: "watch_lists#create", as: 'create_watchlist'
+  delete '/watchlist/:movie_id', to: "watch_lists#destroy", as: 'destroy_watchlist'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

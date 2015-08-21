@@ -105,6 +105,13 @@
    MoviePerson.create(movie_id: 5, person_id: 2, role: 'Director')
    MoviePerson.create(movie_id: 8, person_id: 3, role: 'Actor')
 
+   WatchList.create(movie_id: 1, user_id:1)
+   WatchList.create(movie_id: 2, user_id:1)
+   WatchList.create(movie_id: 3, user_id:1)
+   WatchList.create(movie_id: 4, user_id:1)
+   WatchList.create(movie_id: 5, user_id:1)
+
+
    User.create :email => "taha@taha.com", :password => "123123123", :admin => 'f'
    User.create :email => "brk@brk.com", :password => "123123123", :admin => 'f'
    User.create :email => "admin@admin.com", :password => "123123123", :admin => 't'
