@@ -48,6 +48,13 @@
 	Movie.create(title: 'Üç Maymun', release_date: '1973-04-01', plot: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi nesciunt aliquam doloremque hic neque obcaecati magni! Possimus ut assumenda eligendi quis ab sint dolores ratione dolorem perspiciatis nam quidem, voluptatem.', cover: 'https://upload.wikimedia.org/wikipedia/tr/e/e8/%C3%9C%C3%A7maymun.jpg')
 
 
+   Comment.create(movie_id: 1, user_id: 1, body: "abi çoh iyi yeaaa")
+   Comment.create(movie_id: 1, user_id: 2, body: "@1 ekşici beyler")
+   Comment.create(movie_id: 1, user_id: 3, body: "@2 haklı.")
+   Comment.create(movie_id: 3, user_id: 1, body: "epistemolojik olarak incelersek barok dönemden romantik döneme geçiş sürecini oldukça başarılı rerörörör")
+   Comment.create(movie_id: 3, user_id: 2, body: "@1 entel beyler")
+   Comment.create(movie_id: 3, user_id: 3, body: "@2 insanların görüşüne biraz saygı duyun .s .s")
+
    Person.create(full_name: "Nuri Bilge Ceylan", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Nuribilgeceylan.jpg/220px-Nuribilgeceylan.jpg")
    Person.create(full_name: "Daniel Day Lewis", photo: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Daniel_Day-Lewis,_Jaguar,_Mille_Miglia_2013_cropped.jpg/220px-Daniel_Day-Lewis,_Jaguar,_Mille_Miglia_2013_cropped.jpg")
    Person.create(full_name: "Keanu Reeves", photo: "http://vignette1.wikia.nocookie.net/matrix/images/7/7b/Keanu_Reeves.jpg/revision/latest?cb=20130121015731")
@@ -102,5 +109,6 @@
    User.create :email => "taha@taha.com", :password => "123123123", :admin => 'f'
    User.create :email => "brk@brk.com", :password => "123123123", :admin => 'f'
    User.create :email => "admin@admin.com", :password => "123123123", :admin => 't'
+
 
    #Act, Director, Writer, Producer, Musician, 
