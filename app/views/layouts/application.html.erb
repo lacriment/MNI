@@ -38,11 +38,11 @@
           <a class="navbar-brand" href="/">MNI</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-        <% if current_user %>
-        <form class="navbar-form navbar-right">
-          <div class="form-group">
-            <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-warning' %>
-          </div>
+          <% if current_user %>
+          <form class="navbar-form navbar-right">
+            <div class="form-group">
+              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-warning' %>
+            </div>
           </form>
         <% else %>
         <%= form_for(:user, :url => session_path(:user), html: {class: 'navbar-form navbar-right'} ) do |f|  %>
