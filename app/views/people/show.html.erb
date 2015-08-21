@@ -1,15 +1,23 @@
-<p id="notice"><%= notice %></p>
-
-<h1>
-<%= @person.full_name %>
-</h1>
-
-<%= image_tag(@person.photo) %>
-
-<h2>
-	Filmography
-</h2>
-<% @person.movies.each do |movie| %>
-<%= link_to movie.title, movie_path(movie) %>
-<br>
-<% end %>
+<div class="row">
+  <div class="col-xs-1">
+  </div>
+  <div class="col-xs-4">
+    <h3>Person Info</h3>
+    <%= image_tag(@person.photo,size: "250x350", class: "thumbnail") %>
+    <h4>
+      <%= @person.full_name %>
+    </h4>
+  </div>
+  <div class="col-xs-6">
+    <h2>
+	    Filmography
+    </h2>
+    <ul class="list-group">
+    <% @person.movies.each do |movie| %>
+      <li class="list-group-item"> <%= link_to movie.title, movie_path(movie) %> </li>
+    <% end %>
+    </ul>
+  </div>
+  <div clas="col-xs-1">
+  </div>
+</div>

@@ -1,9 +1,10 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @genre.name %>
-</p>
-
-<%= link_to 'Edit', edit_genre_path(@genre) %> |
-<%= link_to 'Back', genres_path %>
+<div class="row">
+  <h3><%= @genre.name %> Movies</h3>
+  <% @genre.movies.each_with_index do |m,i| %>
+    <div class="col-xs-3">
+      <%= image_tag(m.cover,size: "180x320") %>
+      <p><h5> <%= link_to(m.title,movie_path(m.id)) %>
+      </p></h5>
+    </div>
+  <% end %>
+</div>

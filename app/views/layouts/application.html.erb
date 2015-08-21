@@ -64,22 +64,22 @@
       </div>
     </nav>
 
-    <!-- Main jumbotron for a primary marketing message or call to action -->
     <div class="jumbotron">
       <div class="container">
         <%= yield %>
       </div>
     </div>
-    <hr>
-    <footer>
-      <p>copyleft MNI 2015</p>
-    </footer>
-    </div> <!-- /container -->
-  <% if notice %>
-  <p class="notice"><%= notice %></p>
-  <% end %>
-  <% if alert %>
-  <p class="alert"><%= alert %></p>
-  <% end %>
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <p>Whishlist</p>
+        </div>
+      </div>
+      <hr>
+      <footer>
+        <p class="pull-left">copyleft MNI 2015</p>
+        <p class="pull-right"><%= link_to("@brkkyk","http://github.com/brkkyk") %> <%= link_to("@lacriment","http://github.com/lacriment") %></p>
+      </footer>
+    </div>
 </body>
 </html>

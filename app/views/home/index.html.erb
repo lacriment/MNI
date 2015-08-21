@@ -1,13 +1,10 @@
-
 <div class="row">
-
   <div class="col-xs-6">
     <h3>Showcase</h3>
     <% @movies.each do |m| %>
       <%= link_to image_tag(m.cover,size: "180x320"), movie_path(m.id) %>
     <% end %>
   </div>
-
   <div class="col-xs-6">
     <% if current_user %>
       <h3>Top 10 Movies</h3>
@@ -15,7 +12,7 @@
         <% for i in 0..9 %>
           <li class="list-group-item">
             <span class="badge"><%= @topmovies[i].average.round(2) %></span>
-            <b><%= i+1 %></b> <%= @topmovies[i].title %>
+            <b><%= i+1 %></b> <%= link_to @topmovies[i].title, movie_path(@topmovies[i]) %>
           </li>
        <% end %>
       </ul> 
