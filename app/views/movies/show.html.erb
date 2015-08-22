@@ -1,3 +1,5 @@
+<% content_for :head do %>
+<% end %>
 <div class="row">
 
   <div class="col-xs-4">
@@ -5,7 +7,11 @@
   </div>
 
   <div class="col-xs-8">
-    <h1><%= @movie.title %>&nbsp;<small><%= @movie.release_date.year %></small></h1>
+    <h1>
+    <%= @movie.title %>&nbsp;
+    <small><%= @movie.release_date.year %></small>
+    <%= link_to image_tag('https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/add_to_favourite-128.png', width: 30), movie_create_watchlist_path(@movie.id) %>
+    </h1>
     <h4>
     <% @movie.genres.each do |genre| %>
       <%= link_to genre.name, genre_path(genre) %>

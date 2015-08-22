@@ -7,10 +7,10 @@ Rails.application.routes.draw do
   resources :profiles
   resources :people
   resources :movies do
-    get '/rate/:point', to: "movies#rate", as: 'rate'
+    get '/rate/:point', to: 'movies#rate', as: 'rate'
+    delete '/watchlist', to: 'movies#remove_from_watchlist', as: 'destroy_watchlist'
+    get '/watchlist', to: 'movies#add_to_watchlist', as: 'create_watchlist'
   end
-  get '/watchlist/:movie_id', to: "watch_lists#create", as: 'create_watchlist'
-  delete '/watchlist/:movie_id', to: "watch_lists#destroy", as: 'destroy_watchlist'
   get 'randommovie' => 'randommovie#index'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

@@ -22,6 +22,24 @@ class MoviesController < ApplicationController
     end
   end
 
+  def add_to_watchlist
+    movie = Movie.find(params[:movie_id])
+    if WatchList.where(movie_id: movie.id, user_id: current_user.id).first
+      redirect_to profile_path(current_user)
+    else
+      WatchList.create(movie_id: movie.id, user_id: current_user.id)
+      redirect_to profile_path(current_user)
+    end
+    
+    
+  end
+
+  def remove_from_watchlist
+    movie = Movie.find(params[:movie_id])
+    WatchList.where(movie_id: movie.id, user_id: current_user.id).first.destroy
+    redirect_to profile_path(current_user)
+  end
+
   # GET /movies/1
   # GET /movies/1.json
   def show

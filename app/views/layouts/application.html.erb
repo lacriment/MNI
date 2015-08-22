@@ -24,9 +24,9 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="hidden-xs hidden-sm" style="position: absolute;left: 50%;margin-left:-56px;width:112px" id="centered-div">
-        <a href="/randommovie"><button type="button" class="btn btn-default btn-lg" aria-label="Left Align">
-          <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
-      </button></a>
+        <a href="/randommovie">
+        <span class="glyphicon glyphicon-random" aria-hidden="true" style="font-size: 2em; padding-top:10px;"></span>
+      </a>
       </div>
       <div class="container">
         <div class="navbar-header">
@@ -36,13 +36,13 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">MNI</a>
+          <a class="navbar-brand" href="/" style="font-weight:bold; font-size:2em; color: #ccc;">MNI</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <% if current_user %>
             <form class="navbar-form navbar-right">
               <div class="form-group">
-                <span style="color: white;"><%= current_user.email %></span>&nbsp;
+                <span><%= link_to current_user.email, profile_path(current_user), style: 'color: white;' %></span>&nbsp;
               </div>
             <div class="form-group">
               <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-warning' %>

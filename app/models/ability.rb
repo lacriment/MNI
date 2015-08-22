@@ -11,6 +11,8 @@ class Ability
        else
          can :read, :all
          can :rate,  Movie
+         can :add_to_watchlist, Movie
+         can :remove_from_watchlist, Movie
        end
     #
     # The first argument to `can` is the action you are giving the user
