@@ -93,4 +93,11 @@ ActiveRecord::Schema.define(version: 20150821223330) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "wishlists", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "movie_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end

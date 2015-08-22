@@ -10,7 +10,9 @@
     <h1>
     <%= @movie.title %>&nbsp;
     <small><%= @movie.release_date.year %></small>
-    <%= link_to image_tag('https://cdn2.iconfinder.com/data/icons/shopping-online-e-commerce-store/512/add_to_favourite-128.png', width: 30), movie_create_watchlist_path(@movie.id) %>
+    <% if current_user %>
+    <a href="<%= movie_create_watchlist_path(@movie.id) %>"><h2 class="glyphicon glyphicon-heart-empty"></h2></a>
+    <% end %>
     </h1>
     <h4>
     <% @movie.genres.each do |genre| %>
@@ -117,15 +119,19 @@
     </div>
   <% end %>
   <div class="col-xs-12">
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <h4>
-        Yorum Yap
-        </h4>
+    <% if current_user %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Add a comment</h4>
+        </div>
+        <div class="panel-body">
+          <%= render 'comments/form' %>
+        </div>
       </div>
-      <div class="panel-body">
-      <%= render 'comments/form' %>
+    <% else %>
+      <div class="panel panel-default">
+        <h4>Please sign in to make a comment</h4>
       </div>
-    </div>
+    <% end %>
   </div>
 </div>

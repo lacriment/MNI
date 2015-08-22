@@ -24,9 +24,7 @@
 <body>
   <nav class="navbar navbar-inverse navbar-fixed-top">
       <div class="hidden-xs hidden-sm" style="position: absolute;left: 50%;margin-left:-56px;width:112px" id="centered-div">
-        <a href="/randommovie">
-        <span class="glyphicon glyphicon-random" aria-hidden="true" style="font-size: 2em; padding-top:10px;"></span>
-      </a>
+        <a href="/randommovie"><span class="glyphicon glyphicon-random" aria-hidden="true" style="font-size: 2em; padding-top:10px;"></span></a>
       </div>
       <div class="container">
         <div class="navbar-header">
@@ -36,7 +34,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/" style="font-weight:bold; font-size:2em; color: #ccc;">MNI</a>
+          <a class="navbar-brand" href="/" style="font-weight:bold; font-size:2em; color: #fff;">MNI</a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <% if current_user %>
@@ -44,9 +42,29 @@
               <div class="form-group">
                 <span><%= link_to current_user.email, profile_path(current_user), style: 'color: white;' %></span>&nbsp;
               </div>
-            <div class="form-group">
-              <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-warning' %>
-            </div>
+              <% if current_user.admin %>
+                <div class="form-group">
+                <div class="dropdown">
+                   <button class="btn btn-warning dropdown-toggle" type="button" id="newDropdownMenu" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">New
+                    <span class="caret"></span>
+                   </button>
+                   <ul class="dropdown-menu" aria-labelledby="newDropdownMenu">
+                    <li><a href="/movies/new">New Movie</a></li>
+                    <li><a href="/genres/new">New Genre</a></li>
+                    <li><a href="/people/new">New Person</a></li>
+                  </ul>
+                </div> 
+              </div>
+              <% end %>
+              <div class="form-group">
+                <%= link_to "Genres", genres_path, class: "btn btn-warning" %>
+              </div>
+              <div class="form-group">
+                <%= link_to "Watch List", profile_path(current_user), class: "btn btn-warning" %>
+              </div>
+              <div class="form-group">
+                <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'btn btn-warning' %>
+              </div>
           </form>
         <% else %>
         <%= form_for(:user, :url => session_path(:user), html: {class: 'navbar-form navbar-right'} ) do |f|  %>
@@ -74,7 +92,6 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <p>Watch List</p>
         </div>
       </div>
       <hr>
