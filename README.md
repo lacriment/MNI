@@ -1,7 +1,5 @@
-# MNI
 ## MNI's Not IMDB
+Yet another IMDB clone implemented in Linux Summer Camp 2015.
 
-### Add Seeds to Database
-<pre>
-- rake db:setup
-</pre>
+
+### Live Demo: https://damp-garden-4413.herokuapp.com/
